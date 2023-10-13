@@ -18,7 +18,7 @@ This application lets users search for a country and displays relevant informati
 
 ## Deployment:
 
-The app is deployed on Heroku. [Link to app](#).
+The app is deployed on AWS. [Link to app](#).
 
 ## Testing:
 

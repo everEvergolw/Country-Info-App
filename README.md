@@ -40,4 +40,4 @@ Navigate to `backend/` and run `npm test`.
 
 ## Author:
 
-[Jiahao Liu]
+Jiahao Liu

@@ -24,6 +24,8 @@ app.post('/home_list', (req, res) => {
     });
   }
 
+  
+
   fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`)
     .then(response => response.json())
     .then(data => {
@@ -40,7 +42,7 @@ app.post('/home_list', (req, res) => {
         });
       }
     })
-    .catch(err => {
+    .catch(err => { 
       res.send({
         status: 50000,
         message: "Error fetching country data from API"

@@ -27,32 +27,27 @@ const Home = (props) => {
 
 
 
+
+
 const onSend = () => {
   if (!validateInput()) return;
 
   setLoading(true);
   ajax.getCountryInfo(info)
     .then((res) => {
+      
       setLoading(false); 
 
-      switch(res.data.status) {
-        case 20000:
-          window.sessionStorage.setItem("info", JSON.stringify(res.data.data));
-          window.location.href = `/CountryInfo`;
-          break;
-        case 40000:
-          message.error(res.data.message); // "Country name is required"
-          break;
-        case 50000:
-          message.error(res.data.message); // "Error fetching country data from API"
-          break;
-        case 40400:
-          message.error(res.data.message); // "No information available for the given country name."
-          break;
-        default:
-          message.error("An unknown error occurred!");
-          break;
-      }
+      console.log(res.data.status);
+
+      if(res.data.status == 20000){
+        window.sessionStorage.setItem("info", JSON.stringify(res.data.data)); 
+        window.location.href = `/CountryInfo`;
+      } 
+
+      else 
+        message.error(res.data.message);
+
     })
     .catch((err) => {
         setLoading(false);

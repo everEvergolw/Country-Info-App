@@ -1,0 +1,73 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  width: 100vw;
+  height: 100vh;
+  ::-webkit-scrollbar {
+    width: 0;
+  }
+  ::-webkit-scrollbar-thumb {
+    width: 0;
+  }
+  #root{
+    width: 100vw;
+    height: 100vh;
+    overflow-y: scroll;
+    ::-webkit-scrollbar {
+      width: 0;
+    }
+    ::-webkit-scrollbar-thumb {
+      width: 0;
+    }
+  }
+}
+*{
+  box-sizing: border-box;
+  margin: 0;
+}
+a{
+  text-decoration: none; /* 去除默认的下划线 */
+  color: #000;    /* 去除默认的颜色和点击后变化的颜色 */ 
+  outline:none
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+table /* 设置table 的样式*/
+{
+border-collapse:collapse;
+border-spacing:0;
+}
+fieldset, img
+{
+border:0;
+}
+em, strong
+{
+font-style:normal;
+font-weight:normal;
+}
+li
+{
+list-style:none;
+}
+h1, h2, h3, h4, h5, h6
+{
+font-size:100%;
+font-weight:normal;
+}
+body, input, button, textarea
+{
+font-size:12px;
+font-family:Arial, Helvetica, sans-serif;
+}
+a:hover{ cursor:pointer;}
+th, td{vertical-align:top;}

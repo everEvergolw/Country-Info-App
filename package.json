@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "antd": "^5.10.0",
+    "react-router-dom": "^6.16.0",
+    "sass": "^1.69.3"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+  }
+}

@@ -15,6 +15,7 @@ app.use(cors());
 // Remove redundant middleware for CORS since you're already using the cors package
 // Also, removed the wildcard middleware as it wasn't doing anything specific
 app.post('/home_list', (req, res) => {
+  
   const countryName = req.query.country;
 
   if (!countryName) {
@@ -24,7 +25,7 @@ app.post('/home_list', (req, res) => {
     });
   }
 
-  
+
 
   fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`)
     .then(response => response.json())

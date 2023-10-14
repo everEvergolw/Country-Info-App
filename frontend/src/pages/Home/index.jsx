@@ -35,12 +35,11 @@ const onSend = () => {
   setLoading(true);
   ajax.getCountryInfo(info)
     .then((res) => {
-      
+
       setLoading(false); 
 
-      console.log(res.data.status);
-
-      if(res.data.status == 20000){
+    
+      if(res.data.status === 20000){
         window.sessionStorage.setItem("info", JSON.stringify(res.data.data)); 
         window.location.href = `/CountryInfo`;
       } 
@@ -60,30 +59,45 @@ const onSend = () => {
 
 
   
-  return (
-    <>
-      <div className="home">
-        <div className="box">
-          <div className="header">Country Explorer</div>
-          <div className="body">
-            <div className="text">Enter Country Name</div>
-            <div className="info">
-              <Input placeholder="Search by country name..." onChange={(e) => setInfo(e.target.value)} />
-              {error && <div className="error">{error}</div>} {/* Display error to user */}
-            </div>
-            <div className="submit">
-              <Button onClick={onSend}>Submit</Button>
-            </div>
-            <div className="loading">
-              <Spin tip="Loading" size="small" spinning={loading}>
-                <div className="content" />
-              </Spin>
-            </div>
-          </div>
+return (
+  <div className="home">
+    <div className="box">
+      
+      <div className="header">Country Explorer</div>
+      
+      <div className="body">
+        
+        <div className="text">
+          Enter the name of the country you're interested in:
         </div>
+        
+        <div className="info">
+          <Input 
+            size="large"
+            placeholder="For example, 'Japan'" 
+            onChange={(e) => setInfo(e.target.value)} 
+          />
+          {error && <div className="error">{error}</div>} 
+        </div>
+        
+        <div className="submit">
+          <Button size="large" type="primary" onClick={onSend}>Search</Button>
+        </div>
+        
+        {loading && 
+          <div className="loading">
+            <Spin tip="Searching..." size="large" spinning={loading}>
+              <div className="content" />
+            </Spin>
+          </div>
+        }
+        
       </div>
-    </>
-  );
+
+    </div>
+  </div>
+);
+
 };
 
 export default Home;

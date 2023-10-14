@@ -7,18 +7,24 @@
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
-}
 
-.country-details .banner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
+    .banner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
 
-.country-details .banner img {
-    width: 50%;
-    margin-right: 10px;
+        img {
+            width: 50%;
+            margin-right: 10px;
+        }
+        .flag {
+            border: black solid 1px;
+        }
+        .coat-of-arms {
+            border: black solid 1px;
+        }
+    } 
 }
 
 .country-details .coat-of-arms {
@@ -44,4 +50,22 @@
     font-size: 20px;
     margin-top: 20px;
     margin-bottom: 10px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+
+    .title {
+        font-weight: bold;
+    }
+}
+
+.showMoreLess {
+    color: blue !important;
+}
+
+.Box {
+    display: flex;
+    justify-content: space-between;
 }

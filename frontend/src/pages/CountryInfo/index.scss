@@ -14,6 +14,8 @@
         align-items: center;
         margin-bottom: 20px;
 
+        
+
         img {
             width: 50%;
             margin-right: 10px;
@@ -26,6 +28,12 @@
         }
     } 
 }
+
+h2 {
+    font-weight: bold;
+    
+}
+
 
 .country-details .coat-of-arms {
     width: 40%;
@@ -68,4 +76,9 @@
 .Box {
     display: flex;
     justify-content: space-between;
+}
+
+.showMoreLess {
+    font-size: 1.5em; 
+    cursor: pointer; 
 }

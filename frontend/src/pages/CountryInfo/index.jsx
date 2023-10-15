@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import "./index.scss";
 
@@ -13,7 +13,6 @@ console.log(country)
 const CountryInfo = () => {
 
     const [showMore, setShowMore] = useState(false)
-    const [showAll, setShowAll] =   useState(false);
 
 
 
@@ -25,6 +24,49 @@ const CountryInfo = () => {
         return value ? value : defaultValue;
     };
     
+    
+    const TranslationsDropdown = ({ translations }) => {
+
+        const [isOpen, setIsOpen] = useState(false);
+        const safeTranslations = getOrDefault(translations, {});
+        const dropdownRef = useRef(null);
+    
+        useEffect(() => {
+            const handleClickOutside = (event) => {
+                if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                    setIsOpen(false);
+                }
+            };
+    
+            document.addEventListener('mousedown', handleClickOutside);
+    
+            return () => {
+                document.removeEventListener('mousedown', handleClickOutside);
+            };
+        }, []);
+    
+        const handleButtonClick = (event) => {
+            event.stopPropagation();  
+            setIsOpen(!isOpen);
+        };
+    
+        return (
+            <div className="translations-dropdown" ref={dropdownRef}>
+                <button onClick={handleButtonClick}>Translations</button>
+                {isOpen && (
+                    <div className="dropdown-content">
+                        {Object.entries(safeTranslations).map(([key, val]) => (
+                            <div key={key} className="translation-item">
+                                <span className="lang">{key}</span>: <span className="translation">{val.common}</span>
+                            </div>
+                        ))}
+                    </div>
+                )}
+            </div>
+        );
+    };
+
+
     const ExpandableList = ({ title, items = [], maxVisibleItems = 3 }) => {
         const [showAll, setShowAll] = React.useState(false);
     
@@ -154,7 +196,6 @@ const CountryInfo = () => {
         <div className="info-section links-maps">
             <h2>Links and Maps</h2>
             <a href={getOrDefault(country.maps.googleMaps)} target="_blank" rel="noopener noreferrer">View on Google Maps</a>
-            <a href={getOrDefault(country.maps.openStreetMaps)} target="_blank" rel="noopener noreferrer">View on OpenStreetMaps</a>
         </div>
     
         {/* Economic and Political Information */}
@@ -196,65 +237,67 @@ const CountryInfo = () => {
         </div>
     
 
-        {/* License Plate info is missing in provided JSON */}
-            {/* <p>License Plate: {country.plate}</p> */}
+     
         
-            {showMore && (
-  <div>
-    {/* Additional Details */}
-    <div className="info-section additional-details">
-      <h2>Additional Details</h2>
+        <div>
+  {showMore ? (
+    <div>
+      {/* Additional Details */}
+      <div className="info-section additional-details">
+        <h2>Additional Details</h2>
 
-      <div className="row">
-        <p className="title">Languages:</p>
-        <p>{getOrDefault(Object.values(country.languages).join(', '))}</p>
-      </div>       
+        <div className="row">
+          <p className="title">Languages:</p>
+          <p>{getOrDefault(Object.values(country.languages).join(', '))}</p>
+        </div>       
 
-      <div className="row">
-        <p className="title">Demonyms: </p>
-        <p>Male: {getOrDefault(country.demonyms.eng.m)}, Female: {getOrDefault(country.demonyms.eng.f)}</p>
+        <div className="row">
+          <p className="title">Demonyms: </p>
+          <p>Male: {getOrDefault(country.demonyms.eng.m)}, Female: {getOrDefault(country.demonyms.eng.f)}</p>
+        </div>
+
+        <TranslationsDropdown translations={country.translations} />
+
+        <ExpandableList title="Alternate Spellings" items={getOrDefault(country.altSpellings, [])} />
+
+        <div className="row">
+          <p className="title">TLD: </p>
+          <p>{getOrDefault(country.tld.join(', '))}</p>
+        </div>       
+
+        <div className="row">
+          <p className="title">CCA2:</p>
+          <p>{getOrDefault(country.cca2)}</p>
+
+          <p className="title">CCN3:</p>
+          <p>{getOrDefault(country.ccn3)}</p>
+
+          <p className="title">CCA3:</p>
+          <p>{getOrDefault(country.cca3)}</p>
+
+          <p className="title">CIOC:</p>
+          <p>{getOrDefault(country.cioc)}</p>
+        </div>
       </div>
 
-      <p>Translations: {getOrDefault(Object.entries(country.translations).map(([key, val]) => `${key}: ${val.common}`).join(', '))}</p>
-
-      <ExpandableList title="Alternate Spellings" items={getOrDefault(country.altSpellings, [])} />
-
-      <div className="row">
-        <p className="title">TLD: </p>
-        <p>{getOrDefault(country.tld.join(', '))}</p>
-      </div>       
-
-      <div className="row">
-        <p className="title">CCA2:</p>
-        <p>{getOrDefault(country.cca2)}</p>
-
-        <p className="title">CCN3:</p>
-        <p>{getOrDefault(country.ccn3)}</p>
-
-        <p className="title">CCA3:</p>
-        <p>{getOrDefault(country.cca3)}</p>
-
-        <p className="title">CIOC:</p>
-        <p>{getOrDefault(country.cioc)}</p>
+      {/* Postal Information */}
+      <div className="info-section postal-info">
+        <h2>Postal Information</h2>
+        <div className="row">
+          <p className="title">Format:</p>
+          <p>{getOrDefault(country.postalCode.format)}</p> 
+          <p className="title">Regex:</p>
+          <p>{getOrDefault(country.postalCode.regex)}</p>
+        </div>    
       </div>
+
+      <button className="showMoreLess" onClick={() => setShowMore(false)}>Show less...</button>
     </div>
+  ) : (
+    <button className="showMoreLess" onClick={() => setShowMore(true)}>Show more...</button>
+  )}
+</div>
 
-    {/* Postal Information */}
-    <div className="info-section postal-info">
-      <h2>Postal Information</h2>
-      <div className="row">
-        <p className="title">Format:</p>
-        <p>{getOrDefault(country.postalCode.format)}</p> 
-        <p className="title">Regex:</p>
-        <p>{getOrDefault(country.postalCode.regex)}</p>
-      </div>    
-    </div>
-
-    <a className="showMoreLess" onClick={() => setShowMore(false)}>Show less...</a>
-  </div>
-)}
-
-{!showMore && <a className="showMoreLess" onClick={() => setShowMore(true)}>Show more...</a>}
 </div>
 
     

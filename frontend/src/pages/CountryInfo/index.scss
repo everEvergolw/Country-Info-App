@@ -82,3 +82,49 @@ h2 {
     font-size: 1.5em; 
     cursor: pointer; 
 }
+.translations-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+button {
+    background-color: #3498db;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    outline: none;
+}
+
+.dropdown-content {
+    display: block;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 4px;
+    padding: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.translation-item {
+    padding: 6px 8px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.translation-item:last-child {
+    border-bottom: none;
+}
+
+.lang {
+    font-weight: bold;
+}
+
+.translation {
+    margin-left: 5px;
+}
+
+

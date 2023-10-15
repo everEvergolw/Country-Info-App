@@ -1,6 +1,8 @@
 {
   "dependencies": {
     "antd": "^5.10.0",
+    "google-map-react": "^2.2.1",
+    "osm-static-maps": "^3.10.3",
     "react-router-dom": "^6.16.0",
     "sass": "^1.69.3"
   },

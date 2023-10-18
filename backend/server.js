@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const cors = require('cors');
 
@@ -8,7 +9,14 @@ const app = express();
 const DEFAULT_PORT = 8000;
 const COUNTRIES_API_URL = 'https://restcountries.com/v3.1/name/';
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 // Middlewares
 app.use(cors());

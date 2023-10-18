@@ -3,7 +3,26 @@ const express = require('express');
 const cors = require('cors');
 
 // Initialize App
+
+
+
 const app = express();
+
+
+
+// Serve static assets if in production (or after build)
+if (process.env.NODE_ENV === 'production') {
+    // Set a static folder
+    app.use(express.static('frontend/build'));
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+    });
+}
+
+
+
+
 
 // Constants
 const DEFAULT_PORT = 8000;

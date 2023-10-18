@@ -3,10 +3,8 @@ import GoogleMapReact from 'google-map-react';
 import ExpandableList from './components/ExpandableList';
 import TranslationsDropdown from './components/TranslationsDropdown';
 import { determineZoomLevel,  getOrDefault, getLatestGini, getCurrency } from './utils/helper';
-
-
-
 import "./index.scss";
+
 
 const country = JSON.parse(window.sessionStorage.getItem("info"));
 console.log(country)
@@ -47,6 +45,10 @@ const CountryInfo = () => {
 
 
 };
+
+
+
+
 
 const Banner = ({ country }) => (
   <div className="banner">
@@ -247,6 +249,8 @@ const AdditionalDetails = ({ showMore, setShowMore, country }) => (
       )}
   </div>
 );
+
+
 
 const PostalInfoAndControl = ({ country }) => (
   <div>

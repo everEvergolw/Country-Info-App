@@ -1,7 +1,8 @@
 import { React, useState } from "react";
 import { message, Input, Button, Spin } from "antd";
-import ajax from "@/services";
+import ajax from "@/services/index";
 import "./index.scss";
+
 
 const Home = (props) => {
   const [info, setInfo] = useState('');
@@ -28,31 +29,27 @@ const Home = (props) => {
 
 
 
-
-const onSend = () => {
+const onSend = async () => {
   if (!validateInput()) return;
 
   setLoading(true);
-  ajax.getCountryInfo(info)
-    .then((res) => {
 
-      setLoading(false); 
+  try {
+    const res = await ajax.getCountryInfo(info);
+    setLoading(false);
 
-    
-      if(res.data.status === 20000){
-        window.sessionStorage.setItem("info", JSON.stringify(res.data.data)); 
-        window.location.href = `/CountryInfo`;
-      } 
-
-      else 
-        message.error(res.data.message);
-
-    })
-    .catch((err) => {
-        setLoading(false);
-        message.error("Network error or unexpected issue occurred!");
-    });
+    if (res.data.status === 20000) {
+      window.sessionStorage.setItem("info", JSON.stringify(res.data.data)); 
+      window.location.href = `/CountryInfo`;
+    } else {
+      message.error(res.data.message);
+    }
+  } catch (err) {
+    setLoading(false);
+    message.error("Network error or unexpected issue occurred!");
+  }
 };
+
 
 
 

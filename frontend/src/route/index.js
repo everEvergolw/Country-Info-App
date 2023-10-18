@@ -6,7 +6,7 @@ export default [
     path:'/Home',
     element:<Page.Home key="Home"/>
   },
-  //默认
+
   {
     path:'/',
     element:<Navigate to="/Home"/>

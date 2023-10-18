@@ -14,7 +14,7 @@ This application lets users search for a country and displays relevant informati
 
 1. Navigate to the `backend/` directory.
 2. Install dependencies: `npm install`.
-3. Start the server: `node server.js`.
+3. Start the server: `npm start`.
 
 ## Deployment:
 

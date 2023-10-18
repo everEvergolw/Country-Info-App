@@ -1,5 +1,5 @@
-import Home from "./Home";
-import CountryInfo from "./CountryInfo";
+import Home from "./Home/Home";
+import CountryInfo from "./CountryInfo/CountryInfo";
 
 const pages = {
   Home,

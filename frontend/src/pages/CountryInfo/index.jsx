@@ -9,7 +9,7 @@ import "./index.scss";
 const country = JSON.parse(window.sessionStorage.getItem("info"));
 console.log(country)
 
-const API_KEY = 'N/A';
+const API_KEY = 'AIzaSyCnYTOLsGw4cAhEssoCegLRLaicPhRjoic';
 
 const CountryInfo = () => {
 

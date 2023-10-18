@@ -48,7 +48,6 @@
     "prompts": "^2.4.2",
     "react": "^18.2.0",
     "react-app-polyfill": "^3.0.0",
-    "react-dev-utils": "^12.0.1",
     "react-dom": "^18.2.0",
     "react-infinite-scroll-component": "^6.1.0",
     "react-refresh": "^0.11.0",
@@ -69,6 +68,7 @@
     "workbox-webpack-plugin": "^6.4.1"
   },
   "scripts": {
+    
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js"
@@ -161,9 +161,8 @@
   "devDependencies": {
     "express": "^4.18.1",
     "node-fetch": "^3.3.2",
-    "node-sass": "^7.0.3"
+    "node-sass": "^7.0.3",
+    "react-dev-utils": "^12.0.1"
   },
-
-
   "proxy": "http://localhost:8000/backend/"
 }

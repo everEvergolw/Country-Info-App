@@ -22,8 +22,12 @@ export const determineZoomLevel = (area) => {
  * @returns {*} The input value or the default value.
  */
 export const getOrDefault = (value, defaultValue = 'N/A') => {
-    return value ? value : defaultValue;
+    return value !== undefined && value !== null ? value : defaultValue;
+
 };
+
+
+
 
 /**
  * Get the latest GINI coefficient from a given GINI object.

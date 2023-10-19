@@ -4,11 +4,20 @@
   "description": "",
   "main": "index.js",
   "homepage": "",
+
   "scripts": {
-    "start": "nodemon --exec babel-node server.js --ignore frontend",
+    "start": "node index.js",
+
+    "heroku-postbuild": "cd frontend && npm install && npm run build",
+
     "test": "jest"
+
+
+
   }
   
+
+
   ,
   
   "jest": {

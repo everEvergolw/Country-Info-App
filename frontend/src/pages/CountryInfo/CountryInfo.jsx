@@ -5,6 +5,8 @@ import TranslationsDropdown from '../../components/TranslationsDropdown/Translat
 import { determineZoomLevel,  getOrDefault, getLatestGini, getCurrency } from '../../utils/helper';
 import "./CountryInfo.scss";
 
+import HeaderTitle from '../../components/HeaderTitle';
+
 
 const country = JSON.parse(window.sessionStorage.getItem("info"));
 console.log(country)
@@ -48,6 +50,9 @@ const Banner = ({ country }) => (
   </div>
 );
 
+
+
+
 const InfoSection = ({ title, country }) => (
   <div className="info-section">
       <h2>{title}</h2>
@@ -74,7 +79,9 @@ const InfoSection = ({ title, country }) => (
 const GeographicalInfo = ({ country}) => {
   return (
     <div className="info-section geographical-info">
-      <h2>Geographical Information</h2>
+
+      <HeaderTitle title="Geographical Information" >   </HeaderTitle> 
+
       <div className="row">
         <p className="title">Capital:</p>
         <p>{getOrDefault(country.capital[0])}</p>
@@ -83,6 +90,11 @@ const GeographicalInfo = ({ country}) => {
         <p className="title">Subregion:</p>
         <p>{getOrDefault(country.subregion)}</p>
       </div>
+
+
+
+
+
       <div className="row">
         <p className="title">Latitude, Longitude:</p>
         <p>{getOrDefault(country.latlng.join(', '))}</p>
@@ -90,7 +102,7 @@ const GeographicalInfo = ({ country}) => {
         <p>{getOrDefault(country.capitalInfo && country.capitalInfo.latlng.join(', '))}</p>
       </div>
 
-      <ExpandableList title="Timezones" items={country.timezones} />
+      <ExpandableList title="Timezones" items ={country.timezones} />
       <div className="row">
         <p className="title">Start of week: </p>
         <p>{getOrDefault(country.startOfWeek)}</p>
@@ -98,7 +110,7 @@ const GeographicalInfo = ({ country}) => {
         <p>{getOrDefault(country.area && country.area.toLocaleString())} km²</p>
       </div>
 
-      <ExpandableList title="Neighboring Countries:" items={country.borders} />
+      <ExpandableList title="Neighboring Countries:" items ={country.borders} />
     </div>
   );
 };
@@ -119,7 +131,9 @@ const LinksAndMaps = ({ country }) => {
 
   return (
       <div className="info-section links-maps">
-          <h2>Links and Maps</h2>
+          <HeaderTitle title="Links and Maps" >   </HeaderTitle> 
+
+       
           <a href={getOrDefault(country.maps.googleMaps)} target="_blank" rel="noopener noreferrer">View on Google Maps</a>
           <div style={{ height: '400px', width: '100%', marginTop: '20px' }}>
               <GoogleMapReact bootstrapURLKeys={{ key: API_KEY }} 
@@ -136,7 +150,10 @@ const EconomicAndPoliticalInfo = ({ country }) => {
 
   return (
       <div className="info-section economic-political-info">
-          <h2>Economic and Political Information</h2>
+
+
+         <HeaderTitle title="Economic and Political Information" >   </HeaderTitle> 
+      
 
           <div className="row">
               <p className="title">Currency:</p>
@@ -172,9 +189,13 @@ const EconomicAndPoliticalInfo = ({ country }) => {
   );
 };
 
+
 const TransportAndCommunicationInfo = ({ country }) => (
   <div className="info-section transport-comm-info">
-      <h2>Transport and Communication</h2>
+
+      <HeaderTitle title="Transport and Communication" >   </HeaderTitle> 
+
+      
       
       <div className="row">
           <p className="title">Phone Code:</p>
@@ -195,7 +216,8 @@ const AdditionalDetails = ({ showMore, setShowMore, country }) => (
           <div>
               {/* Additional Details */}
               <div className="info-section additional-details">
-                  <h2>Additional Details</h2>
+              <HeaderTitle title="Additional Details" >   </HeaderTitle> 
+
 
                   <div className="row">
                       <p className="title">Languages:</p>
@@ -233,10 +255,10 @@ const AdditionalDetails = ({ showMore, setShowMore, country }) => (
 
               <PostalInfoAndControl country={country} />
 
-              <button className="showMoreLess" onClick={() => setShowMore(false)}>Show less...</button>
+              <button  onClick={() => setShowMore(false)}>Show less...</button>
           </div>
       ) : (
-          <button className="showMoreLess" onClick={() => setShowMore(true)}>Show more...</button>
+          <button  onClick={() => setShowMore(true)}>Show more...</button>
       )}
   </div>
 );
@@ -247,15 +269,16 @@ const PostalInfoAndControl = ({ country }) => (
   <div>
       {/* Postal Information */}
       <div className="info-section postal-info">
-          <h2>Postal Information</h2>
+          <HeaderTitle title="Postal Information" >   </HeaderTitle> 
+
           <div className="row">
               <p className="title">Format:</p>
-              <p>{getOrDefault(country.postalCode.format)}</p>
+              <p>{getOrDefault(country.postalCode?.format)}</p>
               <p className="title">Regex:</p>
-              <p>{getOrDefault(country.postalCode.regex)}</p>
+              <p>{getOrDefault(country.postalCode?.regex)}</p>
           </div>
-      </div>
-  </div>
+      </div> 
+  </div> 
 );
 
 

@@ -69,7 +69,7 @@
   },
   "scripts": {
     "start-frontend": "react-scripts start",
-    "build": "react-scripts build && (cd ../backend && npm install)",
+    "build": "node scripts/build.js && (cd ../backend && npm install)",
     "test": "node scripts/test.js"
   },
   "eslintConfig": {

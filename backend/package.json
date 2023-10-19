@@ -6,15 +6,10 @@
   "homepage": "",
 
   "scripts": {
-
-    "start": "cd backend && node server.js && cd frontend && npm install && npm run build",
-    
-
+    "start": "node server.js",
     "test": "jest"
+}
 
-
-
-  }
   
 
 

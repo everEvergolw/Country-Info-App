@@ -18,7 +18,7 @@ This application lets users search for a country and displays relevant informati
 
 ## Deployment:
 
-The app is deployed on and Heroku. [Link to Heroku app](https://country-info-task-app-fa8f688978df.herokuapp.com/)
+The app is deployed on Heroku. [Link to Heroku app](https://country-info-task-app-fa8f688978df.herokuapp.com/)
 
 
 ## Testing:

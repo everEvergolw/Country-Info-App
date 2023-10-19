@@ -5,7 +5,6 @@ import { removeToken, getToken } from "./cookies"
 import qs from "qs"
 
 // Default request domain
-axios.defaults.baseURL = "http://localhost:8000/"
 axios.defaults.timeout = 5 * 60 * 1090
 axios.defaults.headers.common["Authorization"] = getToken()
 

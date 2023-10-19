@@ -164,5 +164,5 @@
     "node-sass": "^7.0.3",
     "react-dev-utils": "^12.0.1"
   },
-  "proxy": "http://localhost:8000/backend/"
+  "proxy": "http://localhost:4001"
 }

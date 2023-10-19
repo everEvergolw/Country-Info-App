@@ -8,34 +8,25 @@ const cors = require('cors');
 
 const app = express();
 
+app.use(express.static(path.join(__dirname, '..', 'frontend', 'build')));
+
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '..', 'frontend', 'build', 'index.html'));
+});
 
 
-// Serve static assets if in production (or after build)
-if (process.env.NODE_ENV === 'production') {
-    // Set a static folder
-    app.use(express.static('frontend/build'));
-
-    app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
-    });
-}
 
 
 
 
 
 // Constants
-const DEFAULT_PORT = 8000;
+const DEFAULT_PORT = 4001;
 const COUNTRIES_API_URL = 'https://restcountries.com/v3.1/name/';
 
-app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(express.static(path.join(__dirname, 'build')));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
 
 // Middlewares
 app.use(cors());
@@ -70,14 +61,18 @@ app.post('/home_list', async (req, res) => {
     res.send(result);
 });
 
-// Server Start
-const port = process.env.PORT || DEFAULT_PORT; // Note: PORT should be in uppercase
-app.listen(port, () => {
-    console.log(`Server started on port ${port}`);
-});
+
+
 
 // Load the node-fetch module
 (async () => {
     const module = await import('node-fetch');
     fetch = module.default;
 })();
+
+// Server Start
+const port = process.env.PORT || DEFAULT_PORT; // Note: PORT should be in uppercase
+app.listen(port, () => {
+    console.log(`Server started on port ${port}`);
+});
+

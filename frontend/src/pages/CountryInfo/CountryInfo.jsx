@@ -129,12 +129,17 @@ const LinksAndMaps = ({ country }) => {
       zoom: determineZoomLevel(country.area),
   };
 
+  const handleButtonClick = () => {
+    const url = getOrDefault(country.maps.googleMaps);
+    window.open(url, "_blank");
+};
+
   return (
       <div className="info-section links-maps">
           <HeaderTitle title="Links and Maps" >   </HeaderTitle> 
 
        
-          <a href={getOrDefault(country.maps.googleMaps)} target="_blank" rel="noopener noreferrer">View on Google Maps</a>
+          <button onClick={handleButtonClick} target="_blank" rel="noopener noreferrer">View on Google Maps</button>
           <div style={{ height: '400px', width: '100%', marginTop: '20px' }}>
               <GoogleMapReact bootstrapURLKeys={{ key: API_KEY }} 
               defaultCenter={defaultProps.center} defaultZoom={defaultProps.zoom}>

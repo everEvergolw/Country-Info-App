@@ -37,16 +37,7 @@ const CountryInfo = () => {
     );
 
 
-
-
-
-
-    
-
-
 };
-
-
 
 
 

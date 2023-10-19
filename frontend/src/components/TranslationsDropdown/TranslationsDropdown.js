@@ -1,14 +1,24 @@
 import React, { useState, useEffect, useRef } from 'react';
-
 import { getOrDefault } from '../../utils/helper';
 
-    
+/**
+ * TranslationsDropdown Component.
+ * This component displays a dropdown containing translations for the provided data.
+ * 
+ * @component
+ * @param {Object} props - Props for the component.
+ * @param {Object} props.translations - Translations object where each key is a language and the value is its translation.
+ * @returns {React.ReactNode}
+ */
 const TranslationsDropdown = ({ translations }) => {
 
     const [isOpen, setIsOpen] = useState(false);
     const safeTranslations = getOrDefault(translations, {});
     const dropdownRef = useRef(null);
 
+    /**
+     * Handle clicks outside the dropdown to close it.
+     */
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -23,6 +33,11 @@ const TranslationsDropdown = ({ translations }) => {
         };
     }, []);
 
+    /**
+     * Toggle the dropdown's visibility state.
+     * 
+     * @param {Event} event - The click event.
+     */
     const handleButtonClick = (event) => {
         event.stopPropagation();  
         setIsOpen(!isOpen);

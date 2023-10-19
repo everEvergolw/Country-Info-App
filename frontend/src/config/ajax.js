@@ -18,6 +18,7 @@ axios.interceptors.request.use(
       config.data = qs.stringify(config.data)
     }
     return config
+    
   },
   error => {
     return Promise.reject(error)

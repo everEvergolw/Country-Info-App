@@ -5,7 +5,14 @@
   "main": "index.js",
   "homepage": "",
   "scripts": {
-    "start": "nodemon --exec babel-node server.js --ignore frontend"
+    "start": "nodemon --exec babel-node server.js --ignore frontend",
+    "test": "jest"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testEnvironment": "node"
   },
   "keywords": [],
   "author": "Jiahao Liu",
@@ -15,9 +22,19 @@
     "@babel/node": "^7.22.19",
     "cors": "^2.8.5",
     "express": "^4.18.2",
-    "node-fetch": "^3.3.2"
+    "node-fetch": "^2.7.0"
   },
   "presets": [
-    "@babel/preset-env"
-  ]
+    "@babel/preset-env",
+    "@babel/preset-typescript"
+  ],
+  "devDependencies": {
+    "@babel/preset-env": "^7.23.2",
+    "@babel/preset-typescript": "^7.23.2",
+    "@types/jest": "^29.5.6",
+    "@types/supertest": "^2.0.15",
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3",
+    "ts-jest": "^29.1.1"
+  }
 }

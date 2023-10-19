@@ -4,6 +4,8 @@ const cors = require('cors');
 
 // Initialize App
 
+// Load the node-fetch module
+const fetch = require('node-fetch');
 
 
 const app = express();
@@ -64,11 +66,7 @@ app.post('/home_list', async (req, res) => {
 
 
 
-// Load the node-fetch module
-(async () => {
-    const module = await import('node-fetch');
-    fetch = module.default;
-})();
+
 
 // Server Start
 const port = process.env.PORT || DEFAULT_PORT; // Note: PORT should be in uppercase
@@ -76,3 +74,5 @@ app.listen(port, () => {
     console.log(`Server started on port ${port}`);
 });
 
+// At the end of your server.js
+module.exports = app;

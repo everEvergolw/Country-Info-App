@@ -62,15 +62,22 @@ The app is deployed on Heroku. [Link to Heroku app](https://country-info-task-ap
 
 ## Testing:
 
-To run tests:
-
 ### Frontend:
+**Testing Tool:** Cypress
 
-Navigate to `frontend/` and run `npm test`.
+**How to run:**
+1. Navigate to the `frontend/` directory.
+2. Use the command `npx cypress open` to run tests 
 
 ### Backend:
+**Testing Tool:** Jest
 
-Navigate to `backend/` and run `npm test`.
+**How to run:**
+1. Navigate to the `backend/` directory.
+2. Run the command `npm test`.
+
+Jest will automatically find and run all test files, giving you a concise report on each test's status.
+
 
 ## Features:
 

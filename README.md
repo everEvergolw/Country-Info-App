@@ -2,19 +2,58 @@
 
 This application lets users search for a country and displays relevant information about it.
 
-## Setup & Running:
+## Setup & Running
 
-### Frontend:
+There are two methods to set up and run the application.
 
+### Method 1: Running Frontend and Backend Separately
+
+#### Frontend:
 1. Navigate to the `frontend/` directory.
-2. Install dependencies: `npm install`.
-3. Start the development server: `npm start`.
+    ```bash
+    cd frontend/
+    ```
 
-### Backend:
+2. Install dependencies:
+    ```bash
+    npm install
+    ```
 
+3. Start the development server:
+    ```bash
+    npm start
+    ```
+
+#### Backend:
 1. Navigate to the `backend/` directory.
-2. Install dependencies: `npm install`.
-3. Start the server: `npm start`.
+    ```bash
+    cd backend/
+    ```
+
+2. Install dependencies:
+    ```bash
+    npm install
+    ```
+
+3. Start the server:
+    ```bash
+    node server.js
+    ```
+
+### Method 2: Unified Start from Backend
+
+1. Ensure you've installed dependencies in both the `frontend` and `backend` directories.
+
+2. Navigate to the `backend/` directory.
+    ```bash
+    cd backend/
+    ```
+
+3. Start both the backend and frontend with a single command:
+    ```bash
+    npm start
+    ```
+
 
 ## Deployment:
 
@@ -41,4 +80,5 @@ Navigate to `backend/` and run `npm test`.
 
 ## Author:
 
-Jiahao Liu
+[Jiahao Liu](https://github.com/everEvergolw/Country-Info-App)
+
